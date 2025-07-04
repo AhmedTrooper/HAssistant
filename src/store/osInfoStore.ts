@@ -2,6 +2,8 @@ import { create } from "zustand";
 import { platform } from "@tauri-apps/plugin-os";
 import { OsInfoState } from "@/interface/store/OsInfoStore";
 
+
+
 const useOsInfoStore = create<OsInfoState>((set, get) => ({
   osName: null,
   isMobileOS: false,
@@ -12,11 +14,10 @@ const useOsInfoStore = create<OsInfoState>((set, get) => ({
   detectMobileOS: () => {
     const osInfoStore = get();
     const setOsFetched = osInfoStore.setOsFetched;
-    let osFetched = osInfoStore.osFetched;
     const currentOS = platform();
     set({ osName: currentOS });
     setOsFetched(true);
-    osFetched = osInfoStore.osFetched;
+
 
     if (currentOS === "android" || currentOS === "ios") {
       set({ isMobileOS: true });

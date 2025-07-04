@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import "./App.css";
 import { Outlet } from "react-router-dom";
-import useOsInfoStore from "./store/OsInfoStore";
 import MenuBar from "./components/menuBar/MenuBar";
-import useThemeStore from "./store/ThemeStore";
+import useThemeStore from "./store/ThemeStore.ts";
+import useOsInfoStore from "./store/OsInfoStore";
+
 
 function App() {
   const dark = useThemeStore((state) => state.dark);

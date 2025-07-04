@@ -4,22 +4,25 @@ import { open } from "@tauri-apps/plugin-dialog";
 import { useState } from "react";
 
 export default function Home() {
-  const [dir, setDir] = useState<string | null>(null);
-  const [instruction, setInstruction] = useState<string | null>(null);
+  const [dir, setDir] = useState<string>("");
+  const [instruction, setInstruction] = useState<string>("");
   const [response, setResponse] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const getDir = async () => {
+    const singleLine = instruction.replace(/\s*\n\s*/g, " ").trim();
     setIsLoading(true);
     const cmd = Command.create("geminiCmd", [
+      "--model",
+      "gemini-2.5-flash",
       "--prompt",
       // "who is messi in 20 words?",
       // "--version",
-      `${instruction} inside the folder:${dir}`,
+      `${singleLine?.trim()}`,
     ]);
     try {
       const x = await cmd.execute();
-      console.log(x.stdout);
+      console.log("Response is", x.stdout);
       addToast({
         title: "Successfull",
         description: x.stdout,
@@ -28,9 +31,9 @@ export default function Home() {
       });
       setResponse(x.stdout);
     } catch (err) {
-      // console.log(err);
+      console.log(err);
       addToast({
-        title: "Error occurred",
+        title: "Error occurred pos2",
         description: err as string,
         color: "danger",
         timeout: 3000,
@@ -47,10 +50,10 @@ export default function Home() {
         directory: true,
       });
       console.log(file);
-      setDir(file);
+      setDir(`${file}`);
     } catch (error) {
       addToast({
-        title: "Error occurred",
+        title: "Error occurred pos3",
         description: error as string,
         color: "danger",
         timeout: 3000,
