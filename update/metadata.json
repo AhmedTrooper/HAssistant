@@ -1,0 +1,11 @@
+{
+  "version": "0.0.0",
+  "release_date": "YYYY-MM-DD",
+  "features": ["Feature 1","Feature 2"],
+  "fixed_errors": ["Error 1"],
+  "notes": "This release focuses on various new sections",
+  "release_url": "https://github.com/AhmedTrooper/RailwayMatrixBD/releases/tag/v0.6.0",
+  "author": "AhmedTrooper",
+  "severity": "medium",
+  "platforms": ["windows", "android"]
+}
