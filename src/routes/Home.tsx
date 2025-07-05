@@ -10,7 +10,10 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const getDir = async () => {
-    const singleLine = instruction.replace(/\s*\n\s*/g, " ").trim();
+    let singleLine = instruction.replace(/\s*\n\s*/g, " ").trim();
+    if (dir) {
+      singleLine += dir;
+    }
     setIsLoading(true);
     const cmd = Command.create("geminiCmd", [
       "--model",
@@ -18,7 +21,8 @@ export default function Home() {
       "--prompt",
       // "who is messi in 20 words?",
       // "--version",
-      `${singleLine?.trim()}`,
+      `${singleLine?.trim()}:if you don't understand the request,prompt show message to user at least of one line,If dont find/cant read write,let user know,but response should be ,no empty response`,
+      "--yolo".trim(),
     ]);
     try {
       const x = await cmd.execute();
@@ -63,6 +67,7 @@ export default function Home() {
 
   return (
     <div className="p-8 grid gap-4">
+      <h1>Added yolo support with no space</h1>
       <h1>Instruction: {instruction}</h1>
       <h1>{dir}</h1>
       <Textarea onChange={(e) => setInstruction(e.target.value)}></Textarea>
@@ -76,7 +81,7 @@ export default function Home() {
         {isLoading ? <Spinner color="primary" /> : <span>Analyze</span>}
       </Button>
       <h1>Response : </h1>
-      <p>{response}</p>
+      <p className="max-w-[80vw] max-h-[80vh] custom-scrollbar space-x-4">{response}</p>
     </div>
   );
 }

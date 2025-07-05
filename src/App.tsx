@@ -5,7 +5,6 @@ import MenuBar from "./components/menuBar/MenuBar";
 import useThemeStore from "./store/ThemeStore.ts";
 import useOsInfoStore from "./store/OsInfoStore";
 
-
 function App() {
   const dark = useThemeStore((state) => state.dark);
   const setDark = useThemeStore((state) => state.setDark);
@@ -50,7 +49,6 @@ function App() {
     >
       {!isMobileOS && <MenuBar />}
       <Outlet />
-      <h1>{`${osFetched}`}</h1>
     </div>
   );
 }

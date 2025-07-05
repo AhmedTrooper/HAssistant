@@ -1,7 +1,16 @@
-# Tauri + React + Typescript
+# 🎆 HAssistant
 
-This template should help get you started developing with Tauri, React and Typescript in Vite.
+- Desktop app built with **React + TypeScript**, **HeroUI**, and **Tauri v2** to interact with Gemini CLI via in a graphical way.
 
-## Recommended IDE Setup
+## 🧨 Features
 
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+- Select file or folder
+- Create/read/write/appen files recursively through root/child directories
+- Enter instruction for Gemini CLI from input section
+- Executes Gemini CLI based on instruction + selected context
+
+## ✅ Tech Stack
+
+- **Frontend:** React + TypeScript + HeroiUI
+- **Backend:** Tauriv2
+- **Platform:** Desktop (expected -> cross-platform)
